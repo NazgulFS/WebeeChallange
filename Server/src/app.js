@@ -7,6 +7,9 @@ const AppError = require('./utils/appError');
 
 const app = express();
 
+// parse application/x-www-form-urlencoded
+app.use(express.json());
+
 // Allow Cross-Origin requests
 app.use(cors());
 
