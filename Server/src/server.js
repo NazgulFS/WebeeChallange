@@ -16,8 +16,6 @@ const app = require('./app');
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
 
-
-
 // Get connection environment
 const database = process.env.DATABASE;
 
