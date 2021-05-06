@@ -5,7 +5,7 @@ exports.deleteOne = Model => async (req, res, next) => {
         const doc = await Model.findByIdAndDelete(req.params.id);
 
         if (!doc) {
-            return next(new AppError(404, 'fail', `No sensor found with that ${id}`), req, res, next);
+            return next(new AppError(404, 'fail', `No sensor found with id ${id}`), req, res, next);
         }
 
         res.status(204).json({
@@ -18,14 +18,13 @@ exports.deleteOne = Model => async (req, res, next) => {
 };
 
 exports.updateOne = Model => async (req, res, next) => {
-    console.log(req.body)
-    const id = req.params.id;
-
     try {
-        const doc = await Model.findByIdAndUpdate(req.params.id, req.body);
+        const doc = await Model.findByIdAndUpdate(req.params.id, req.body, {
+            new: true,
+        });
 
         if (!doc) {
-            return next(new AppError(404, 'fail', `No sensor found with that ${id}`), req, res, next);
+            return next(new AppError(404, 'fail', `No sensor found with id ${id}`), req, res, next);
         }
 
         res.status(200).json({
@@ -54,7 +53,6 @@ exports.createOne = Model => async (req, res, next) => {
 
     } catch (error) {
         next(error);
-        console.log(error)
     }
 };
 

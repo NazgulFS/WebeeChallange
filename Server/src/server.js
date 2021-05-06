@@ -3,6 +3,8 @@ const dotenv = require('dotenv');
 dotenv.config({
     path: './config.env'
 });
+const http = require("http");
+const realtime = require('./realtime');
 
 process.on('uncaughtException', err => {
     console.log('UNCAUGHT EXCEPTION!!! shutting down...');
@@ -11,6 +13,11 @@ process.on('uncaughtException', err => {
 });
 
 const app = require('./app');
+
+// instance http instead to express
+const server = http.Server(app);
+
+realtime(server);
 
 // Get connection environment
 const database = process.env.DATABASE;
@@ -27,7 +34,7 @@ mongoose.connect(database, {
 
 // Start the server
 const port = process.env.PORT;
-app.listen(port, () => {
+server.listen(port, () => {
     console.log(`Application running on port ${port}`);
 });
 
