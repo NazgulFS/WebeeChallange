@@ -13,10 +13,7 @@ process.on('uncaughtException', err => {
 const app = require('./app');
 
 // instance http instead to express
-const http = require('http').Server(app);
-const io = require('socket.io')(http);
-
-
+const server = require('http').Server(app);
 
 // Get connection environment
 const database = process.env.DATABASE;
@@ -33,14 +30,14 @@ mongoose.connect(database, {
 
 // Start the server
 const port = process.env.PORT;
-http.listen(port, () => {
+server.listen(port, () => {
     console.log(`Application running on port ${port}`);
 });
 
 process.on('unhandledRejection', err => {
     console.log('UNHANDLED REJECTION!!!  shutting down ...');
     console.log(err.name, err.message);
-    http.close(() => {
+    server.close(() => {
         process.exit(1);
     });
 });

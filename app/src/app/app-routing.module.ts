@@ -1,13 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { SensorsComponent } from './sensors/sensors.component';
-import { HeaderComponent } from './header/header.component';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: SensorsComponent
-  },
+
+  { path: 'list', loadChildren: () => import('./pages/sensors/list/list.module').then(m => m.ListModule) },
+  { path: 'new', loadChildren: () => import('./pages/sensors/new/new.module').then(m => m.NewModule) },
+  { path: 'details', loadChildren: () => import('./pages/sensors/details/details.module').then(m => m.DetailsModule) },
+  { path: 'edit', loadChildren: () => import('./pages/sensors/edit/edit.module').then(m => m.EditModule) },
 
 ];
 
