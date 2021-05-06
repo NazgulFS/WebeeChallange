@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Sensor } from 'src/app/models/sensors.model';
+import { SensorsService } from 'src/app/services/sensors.service';
 
 @Component({
   selector: 'app-sensor-form',
@@ -14,7 +15,11 @@ export class SensorFormComponent implements OnInit {
   sensorForm: FormGroup;
   private
 
-  constructor( private router:Router, private fb: FormBuilder ) {
+  constructor( 
+    private router:Router, 
+    private fb: FormBuilder, 
+    private sensorService: SensorsService,
+    ) {
     const navigation = this.router.getCurrentNavigation();
     this.sensor = navigation?.extras?.state?.sensor;
     this.initForm();
@@ -32,7 +37,23 @@ export class SensorFormComponent implements OnInit {
   }
 
   onSave():void {
-    console.log('saved', this.sensorForm.value)
+    if(this.sensorForm.valid) {
+      console.warn(this.sensorForm.valid)
+      const sensor = this.sensorForm.value;
+      const id = this.sensor?._id || null;
+      console.log(id)
+      if(id != null) {
+        this.sensorService.editSensorById(id, sensor).subscribe((res) => {
+          console.info('Sensor edited', res);
+          this.router.navigate(['list']);
+        })
+      } else {
+        this.sensorService.createNewSensor(sensor).subscribe((res) => {
+          console.info('Sensor created', res);
+          this.sensorForm.reset()
+        })
+      }
+    }
   }
 
   goBackToList():void {

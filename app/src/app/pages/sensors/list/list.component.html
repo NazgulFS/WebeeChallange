@@ -7,7 +7,7 @@
         </thead>
         <tbody>
             <tr *ngFor="let sensor of allSensors; index as i">
-                <th scope="row">{{i}}</th>
+                <th scope="row">{{i+1}}</th>
                 <td>{{sensor.name}}</td>
                 <td>{{sensor.active}}</td>
                 <td>{{sensor.minval}}</td>
@@ -15,7 +15,7 @@
                 <td class="btn-group d-none d-sm-block" role="group">
                     <button type="button" class="btn btn-sm btn-outline-primary m-1" (click)="onGoToEdit(sensor)">Editar</button>
                     <button type="button" class="btn btn-sm btn-outline-primary m-1" (click)="onGoToDetail(sensor)">Details</button>
-                    <button type="button" class="btn btn-sm btn-outline-danger m-1" (click)="onGoToDelete(sensor)">Delete</button>
+                    <button type="button" class="btn btn-sm btn-outline-danger m-1" (click)="sensorDelete(sensor._id)">Delete</button>
                 </td>
             </tr>
         </tbody>

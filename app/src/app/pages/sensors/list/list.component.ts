@@ -54,7 +54,13 @@ export class ListComponent implements OnInit {
     this.router.navigate(['details'], this.navigationExtras);
   }
 
-  onGoToDelete(item:any):void {
-    alert('Deleted')
+  async sensorDelete(id:string):Promise<void> {
+    try {
+      await this.sensorService.onDelete(id).subscribe((res) => {
+        alert(`Sensor with id ${id} deleted!`);
+      })
+    } catch (error) {
+      console.error(error)
+    }
   }
 }

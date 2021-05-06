@@ -1,6 +1,7 @@
 import { Route } from '@angular/compiler/src/core';
 import { Component, OnInit } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
+import { SensorsService } from 'src/app/services/sensors.service';
 import { Sensor } from '../../../models/sensors.model';
 
 @Component({
@@ -18,7 +19,7 @@ export class DetailsComponent implements OnInit {
     }
   }
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private sensorService: SensorsService) {
     const navigation = this.router.getCurrentNavigation();
     this.sensor = navigation?.extras?.state?.sensor;
    }
@@ -36,8 +37,16 @@ export class DetailsComponent implements OnInit {
     this.router.navigate(['edit'], this.navigationExtras);
   }
 
-  onDelete():void {
-    alert('delete')
+  async sensorDelete():Promise<void> {
+    const id = this.sensor._id;
+    try {
+      await this.sensorService.onDelete(id).subscribe((res) => {
+        alert(`Sensor with id ${id} deleted!`);
+        this.router.navigate(['list']);
+      })
+    } catch (error) {
+      console.error(error)
+    }
   }
 
   goBackToList():void {
