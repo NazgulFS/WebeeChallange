@@ -3,19 +3,24 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { SensorsComponent } from './sensors/sensors.component';
-import { HeaderComponent } from './header/header.component';
+import { HeaderComponent } from './shared/components/header/header.component';
+import { FormsModule } from '@angular/forms';
+import { SocketIoModule } from 'ngx-socket-io';
+import { HeaderModule } from './shared/components/header/header.module';
+import { SensorFormModule } from './shared/components/sensor-form/sensor-form.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SensorsComponent,
-    HeaderComponent
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    HeaderModule,
+    SensorFormModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

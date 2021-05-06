@@ -1,6 +1,7 @@
 export class Sensor {
-    public id: number;
+    public _id: string;
     public name: string;
+    public active: boolean;
     public minval: number;
     public maxval: number
 }
