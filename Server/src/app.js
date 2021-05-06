@@ -4,10 +4,8 @@ const cors = require('cors');
 const sensorRoutes = require('./routes/sensorRoutes');
 const globalErrHandler = require('./controllers/errorController');
 const AppError = require('./utils/appError');
-const http = require("http");
 
 const app = express();
-const server = http.Server(app);
 
 // parse application/x-www-form-urlencoded
 app.use(express.json());
