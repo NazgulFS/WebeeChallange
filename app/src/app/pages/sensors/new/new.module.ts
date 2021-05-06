@@ -3,13 +3,15 @@ import { CommonModule } from '@angular/common';
 
 import { NewRoutingModule } from './new-routing.module';
 import { NewComponent } from './new.component';
+import { SensorFormModule } from 'src/app/shared/components/sensor-form/sensor-form.module';
 
 
 @NgModule({
   declarations: [NewComponent],
   imports: [
     CommonModule,
-    NewRoutingModule
+    NewRoutingModule,
+    SensorFormModule
   ]
 })
 export class NewModule { }

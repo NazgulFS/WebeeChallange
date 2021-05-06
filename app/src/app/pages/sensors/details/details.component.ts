@@ -1,6 +1,7 @@
 import { Route } from '@angular/compiler/src/core';
 import { Component, OnInit } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
+import { Sensor } from '../../../models/sensors.model';
 
 @Component({
   selector: 'app-details',
@@ -9,7 +10,7 @@ import { NavigationExtras, Router } from '@angular/router';
 })
 export class DetailsComponent implements OnInit {
 
-  sensor = null;
+  sensor:Sensor = null;
 
   navigationExtras: NavigationExtras = {
     state: {
@@ -19,10 +20,15 @@ export class DetailsComponent implements OnInit {
 
   constructor(private router: Router) {
     const navigation = this.router.getCurrentNavigation();
-    this.sensor = navigation?.extras?.state;
+    this.sensor = navigation?.extras?.state?.sensor;
    }
 
   ngOnInit(): void {
+
+    //if not exist redirectxxt
+    if(typeof this.sensor == 'undefined') {
+      this.router.navigate(['list'])
+    }
   }
 
   onGoToEdit():void {
