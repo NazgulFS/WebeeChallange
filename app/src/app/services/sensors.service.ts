@@ -23,7 +23,7 @@ export class SensorsService {
   }
 
   editSensorById(sensor_id:string, body:Sensor) {
-    return this.httpClient.patch(`${SERVER_API_URL}/${sensor_id}`, body);
+    return this.httpClient.put(`${SERVER_API_URL}/${sensor_id}`, body);
   }
 
   onDelete(sensor_id:string) {

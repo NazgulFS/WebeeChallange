@@ -11,7 +11,6 @@ import { Observable, BehaviorSubject } from 'rxjs'
 })
 export class AuthService {
 
-  AUTH_SERVER: string = 'http://localhost:3000';
   authSubject = new BehaviorSubject(false);
   private token: string;
 
@@ -29,7 +28,9 @@ export class AuthService {
 
   login(user:User): Observable<JWTResponse> {
     return this.httpClient.post<JWTResponse>(`${AUTH_API_URL}/login`,user).pipe(tap(
+      
       (res:JWTResponse) => {
+        console.log(user)
         if(res) {
           this.saveToken(res.dataUser.accessToken, res.dataUser.expiresIn);
         }

@@ -47,15 +47,27 @@ export class SensorFormComponent implements OnInit {
     if(this.sensorForm.valid) {
       console.warn(this.sensorForm.valid)
       const sensor = this.sensorForm.value;
+      console.warn(sensor)
       const id = this.sensor?._id || null;
       console.log(id)
+      let sensorBody:any = {
+        name: sensor.name,
+        active: sensor.active,
+        location:{
+          lat:sensor.lat,
+          long: sensor.long
+        },
+        minval:sensor.minval,
+        maxval:sensor.maxval
+      }
       if(id != null) {
-        this.sensorService.editSensorById(id, sensor).subscribe((res) => {
+        this.sensorService.editSensorById(id, sensorBody).subscribe((res) => {
           console.info('Sensor edited', res);
           this.router.navigate(['list']);
         })
       } else {
-        this.sensorService.createNewSensor(sensor).subscribe((res) => {
+        console.log(sensorBody)
+        this.sensorService.createNewSensor(sensorBody).subscribe((res) => {
           console.info('Sensor created', res);
           this.sensorForm.reset()
         })
@@ -70,8 +82,9 @@ export class SensorFormComponent implements OnInit {
   private initForm():void {
     this.sensorForm = this.fb.group({
       name: ['', [Validators.required]],
-      location: [''],
       active: [''],
+      lat: [''],
+      long: [''],
       minval: ['', [Validators.required, Validators.pattern(/^-?(0|[1-9]\d*)?$/)]],
       maxval: ['', [Validators.required, Validators.pattern(/^-?(0|[1-9]\d*)?$/)]],
     })

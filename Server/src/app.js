@@ -17,7 +17,7 @@ app.use(cors());
 // base route
 app.use('/api', sensorRoutes);
 
-/* app.use('/auth', authRoutes); */
+app.use('/auth', authRoutes);
 
 // undefined Routes
 app.use('*', (req, res, next) => {

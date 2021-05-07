@@ -11,7 +11,7 @@ import { Sensor } from '../../../models/sensors.model';
 })
 export class DetailsComponent implements OnInit {
 
-  sensor:Sensor = null;
+  sensor:any = null;
 
   navigationExtras: NavigationExtras = {
     state: {

@@ -35,7 +35,7 @@ exports.loginUser = (req, res, next) => {
   }
   User.findOne({ email: userData.email }, (err, user) => {
     if (err) return res.status(500).send('Server error!');
-
+    console.warn(user)
     if (!user) {
       // email does not exist
       res.status(409).send({ message: 'Something is wrong' });

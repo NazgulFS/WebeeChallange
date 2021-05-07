@@ -7,9 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  _route: boolean;
+  currentURL='';
+
+  constructor(
+  ) { 
+    this.currentURL = window.location.href;
+    console.log(this.currentURL)
+    this._route = this.currentURL.includes('register' || 'login')
+    console.log(this._route)
+  }
 
   ngOnInit(): void {
   }
-
 }

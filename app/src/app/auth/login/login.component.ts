@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
-import { User } from '../../models/user';
 
 @Component({
   selector: 'app-login',
@@ -13,11 +12,13 @@ export class LoginComponent implements OnInit {
   constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
+
   }
 
   onLogin(form):void {
     this.authService.login(form.value).subscribe((res) => {
-      this.router.navigate['/list']
+      console.log('onLogin',res)
+      this.router.navigate(['list'])
     })
   }
 }

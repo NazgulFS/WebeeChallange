@@ -12,11 +12,12 @@ in list secction: table with al sensors with actions buttons for edit, explore d
 
 #### TECHNOLOGIES AND LIBRARIES USED
 
-Angular 11 | Bootstrap | Socket.io | Dotenv | Validator
+Angular 11 | Bootstrap | Socket.io | Dotenv | Validator | JWT |
 
 ##### EXTRAS POINTS
 ###### ✅ Responsive design
 ###### 🕒 Add test cases to components - In progress
+###### 🕒 webSocket - In progress
 
 ### Prerequisites
 ```
