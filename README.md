@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ## WEBEE_CHALLENGE
 
 WEBEE Fullstack technical test. This project is based on Angular in Front end Nodejs in backend, WebSockets for realtime endpoints
@@ -48,7 +47,3 @@ npm install
 ng serve
 ```
 
-=======
-# WebeeChallenge
-Develop branch
->>>>>>> 312717b2163ef65f726f0c19e3c4aae649a825c6
