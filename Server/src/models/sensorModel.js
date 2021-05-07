@@ -7,7 +7,15 @@ const SensorSchema = new mongoose.Schema({
   },
   active: {
     type: Boolean,
-    default: false,
+
+  },
+  location: {
+    lat: {
+      type:Number
+    },
+    long: {
+      type:Number
+    }
   },
   minval: {
     type: Number,

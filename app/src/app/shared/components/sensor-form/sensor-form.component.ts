@@ -13,7 +13,6 @@ export class SensorFormComponent implements OnInit {
 
   sensor:Sensor = null;
   sensorForm: FormGroup;
-  private
 
   constructor( 
     private router:Router, 
@@ -34,6 +33,14 @@ export class SensorFormComponent implements OnInit {
       this.sensorForm.patchValue(this.sensor);
     }
 
+  }
+
+  isValidField(field: any):any {
+    const validatedField = this.sensorForm.get(field);
+    if(validatedField != null) {
+      return(!validatedField.valid && validatedField.touched)
+      ? 'is-invalid' : validatedField.touched ? 'is-valid' : ''
+    }
   }
 
   onSave():void {
@@ -63,6 +70,8 @@ export class SensorFormComponent implements OnInit {
   private initForm():void {
     this.sensorForm = this.fb.group({
       name: ['', [Validators.required]],
+      location: [''],
+      active: [''],
       minval: ['', [Validators.required, Validators.pattern(/^-?(0|[1-9]\d*)?$/)]],
       maxval: ['', [Validators.required, Validators.pattern(/^-?(0|[1-9]\d*)?$/)]],
     })

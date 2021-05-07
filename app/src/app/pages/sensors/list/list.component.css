@@ -1,0 +1,7 @@
+td {
+    text-align: center;
+}
+.table-responsive {
+    overflow-x: auto;
+    overflow-y: hidden;
+}

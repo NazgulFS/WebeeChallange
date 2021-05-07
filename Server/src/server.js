@@ -13,12 +13,7 @@ process.on('uncaughtException', err => {
 const app = require('./app');
 
 // instance http instead to express
-<<<<<<< HEAD
-const http = require('http').Server(app);
-const io = require('socket.io')(http);
-=======
 const server = require('http').Server(app);
->>>>>>> feature/frontend
 
 // Get connection environment
 const database = process.env.DATABASE;

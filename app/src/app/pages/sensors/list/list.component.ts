@@ -10,7 +10,7 @@ import { SensorsService } from '../../../services/sensors.service';
 })
 export class ListComponent implements OnInit {
 
-  headers: string[] = ['#','Name', 'Active', 'minval', 'maxval','actions'];
+  headers: string[] = ['#','Name', 'Active', 'minval', 'maxval', 'lat', 'long','actions'];
   allSensors:Sensor[];
   aSensor:Sensor;
 
@@ -28,6 +28,10 @@ export class ListComponent implements OnInit {
    }
 
   ngOnInit(): void {
+  }
+
+  goBackToList():void {
+    this.router.navigate(['list']);
   }
 
   retrieveSensors() {

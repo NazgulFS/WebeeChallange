@@ -42,7 +42,7 @@ export class DetailsComponent implements OnInit {
     try {
       await this.sensorService.onDelete(id).subscribe((res) => {
         alert(`Sensor with id ${id} deleted!`);
-        this.router.navigate(['list']);
+        this.goBackToList();
       })
     } catch (error) {
       console.error(error)

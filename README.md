@@ -1,4 +1,4 @@
-## WEBEE_CHALLANGE
+## WEBEE_CHALLENGE
 
 WEBEE Fullstack technical test. This project is based on Angular in Front end Nodejs in backend, WebSockets for realtime endpoints
 
@@ -12,7 +12,7 @@ in list secction: table with al sensors with actions buttons for edit, explore d
 
 #### TECHNOLOGIES AND LIBRARIES USED
 
-Angular 11 | Bootstrap | Vuetify | Socket.io | Dotenv | Validator
+Angular 11 | Bootstrap | Socket.io | Dotenv | Validator
 
 ##### EXTRAS POINTS
 ###### ✅ Postman test

@@ -1,23 +1,61 @@
-<div class="table-responsive">
-    <table class="table table-hover">
-        <thead>
-            <tr>
-                <th scope="col" *ngFor="let item of headers">{{item | uppercase}}</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let sensor of allSensors; index as i">
-                <th scope="row">{{i+1}}</th>
-                <td>{{sensor.name}}</td>
-                <td>{{sensor.active}}</td>
-                <td>{{sensor.minval}}</td>
-                <td>{{sensor.maxval}}</td>
-                <td class="btn-group d-none d-sm-block" role="group">
-                    <button type="button" class="btn btn-sm btn-outline-primary m-1" (click)="onGoToEdit(sensor)">Editar</button>
-                    <button type="button" class="btn btn-sm btn-outline-primary m-1" (click)="onGoToDetail(sensor)">Details</button>
-                    <button type="button" class="btn btn-sm btn-outline-danger m-1" (click)="sensorDelete(sensor._id)">Delete</button>
-                </td>
-            </tr>
-        </tbody>
+<div class="table-responsive mt-4 card">
+    <table class="table table-hover my-0">
+      <thead>
+        <tr>
+          <th
+            scope="col"
+            *ngFor="let item of headers"
+            class="text-center text-capitalize table-light"
+          >
+            {{ item }}
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let sensor of allSensors; index as i">
+          <th class="align-middle text-center" scope="row">{{ i + 1 }}</th>
+          <td class="align-middle">{{ sensor.name }}</td>
+          <td
+            *ngIf="sensor.active === true"
+            class="align-middle text-uppercase text-success"
+          >
+            Online
+          </td>
+          <td
+            *ngIf="sensor.active === false"
+            class="align-middle text-uppercase text-error"
+          >
+            Offline
+          </td>
+          <td class="align-middle">{{ sensor.minval }}</td>
+          <td class="align-middle">{{ sensor.maxval }}</td>
+          <td class="align-middle">{{ sensor.location.lat}}</td>
+          <td class="align-middle">{{ sensor.location.long}}</td>
+          <td>
+            <button
+              type="button"
+              class="btn btn-sm btn-outline-primary m-1"
+              (click)="onGoToEdit(sensor)"
+            >
+              Edit
+            </button>
+            <button
+              type="button"
+              class="btn btn-sm btn-outline-secondary m-1"
+              (click)="onGoToDetail(sensor)"
+            >
+              Details
+            </button>
+            <button
+              type="button"
+              class="btn btn-sm btn-outline-danger m-1"
+              (click)="sensorDelete(sensor._id)"
+            >
+              Delete
+            </button>
+          </td>
+        </tr>
+      </tbody>
     </table>
-</div>
+  </div>
+  
