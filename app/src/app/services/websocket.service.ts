@@ -1,30 +1,30 @@
 import { Injectable } from '@angular/core';
-import { Observable, Subscriber } from 'rxjs';
-import * as io from 'socket.io-client';
+import { Observable } from 'rxjs';
+import { io, Socket } from 'socket.io-client';
 
 @Injectable({
   providedIn: 'root'
 })
 export class WebsocketService {
 
-  socket:any;
-  readonly uri: string = "ws://localhost:3000";
+  private socket: Socket;
 
   constructor() {
-    this.socket = io(this.uri)
-   }
-
-  
-
-  listen(eventName:string) {
-    return new Observable((subscriber) => {
-      this.socket.on(eventName, (data) => {
-        subscriber.next(data);
-      })
-    });
+    this.socket = io('http://localhost:3000');
   }
 
-  emit(eventName:string, data:any) {
-    this.socket.emit(eventName, data);
+  
+  // EMITTER
+  sendMessage(msg: string) {
+    this.socket.emit('sendMessage', { message: msg });
+  }
+
+  // HANDLER
+  onNewMessage() {
+    return new Observable(observer => {
+      this.socket.on('newMessage', msg => {
+        observer.next(msg);
+      });
+    });
   }
 }

@@ -1,0 +1,11 @@
+<div class="wrapper fadeInDown">
+  <h3>Register</h3>
+    <div id="formContent">
+      <form #frmRegister="ngForm" class="login-container" (ngSubmit)="onRegister(frmRegister)">
+        <input type="text" id="email" class="fadeIn second" name="email" placeholder="email" ngModel required>
+        <input type="text" id="name" class="fadeIn second" name="name" placeholder="name" ngModel required>
+        <input type="text" id="password" class="fadeIn third" name="password" placeholder="password" ngModel required>
+        <input type="submit" class="fadeIn fourth" value="Register">
+      </form>
+    </div>
+  </div>

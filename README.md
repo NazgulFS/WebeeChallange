@@ -15,7 +15,6 @@ in list secction: table with al sensors with actions buttons for edit, explore d
 Angular 11 | Bootstrap | Socket.io | Dotenv | Validator
 
 ##### EXTRAS POINTS
-###### ✅ Postman test
 ###### ✅ Responsive design
 ###### 🕒 Add test cases to components - In progress
 

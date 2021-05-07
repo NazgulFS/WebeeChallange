@@ -4,16 +4,20 @@ dotenv.config({
     path: './config.env'
 });
 
-process.on('uncaughtException', err => {
+/* process.on('uncaughtException', err => {
     console.log('UNCAUGHT EXCEPTION!!! shutting down...');
     console.log(err.name, err.message);
     process.exit(1);
-});
+}); */
 
 const app = require('./app');
 
 // instance http instead to express
 const server = require('http').Server(app);
+const io = require('socket.io')(server)
+
+// Sockets
+require('./sockets')(io);
 
 // Get connection environment
 const database = process.env.DATABASE;
@@ -25,7 +29,7 @@ mongoose.connect(database, {
     useFindAndModify: false,
     useUnifiedTopology: true,
 }).then(con => {
-    console.log('DB connection Successfully!',database);
+    console.log('DB connection Successfully!');
 });
 
 // Start the server

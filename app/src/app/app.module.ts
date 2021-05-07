@@ -9,10 +9,12 @@ import { SocketIoModule } from 'ngx-socket-io';
 import { HeaderModule } from './shared/components/header/header.module';
 import { SensorFormModule } from './shared/components/sensor-form/sensor-form.module';
 
+
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
+
   ],
   imports: [
     BrowserModule,
